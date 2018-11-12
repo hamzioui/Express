@@ -17,8 +17,9 @@ app.get('/test', function (req, res) {
 
 // POST method route
 app.post('/test', function (req, res) {
-    console.log(req.body.myData,'tttt');
-    res.send('POST request to the homepage')
+    console.log(req.body,'tttt');
+    //res.send('POST request to the homepage')
+    res.json({status:true})
 })
 app.use('/', express.static(public));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

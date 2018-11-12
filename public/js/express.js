@@ -1,15 +1,16 @@
 $( document ).ready(function() {
-    $.ajax({
-        url : 'test',
-        type: 'POST',  // http method
-        data: { myData: 'This is my data.' },  // data to submit
-        success : function(data){
-            console.log(data);
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    var params = {test:'test'};
+    var link ='test';
+    var myInit = { method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
         },
-
-        error : function(resultat, statut, erreur){
-console.log(resultat, statut, erreur)
-        }
-
-    });
+        body: JSON.stringify(params)
+        };
+    fetch(link,myInit)
+        .then(res => res.json())
+        .then(response => console.log('Success:', response))
+        .catch(error => console.error('Error:', error));
 });
